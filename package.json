@@ -2,7 +2,7 @@
   "name": "currying-react-callbacks",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://zendra1994.github.io/currying-react-event-callbacks",
+  "homepage": "http://zendra1994.github.io/currying-react-callbacks",
   "dependencies": {
     "gh-pages": "^2.0.1",
     "react": "^16.6.0",

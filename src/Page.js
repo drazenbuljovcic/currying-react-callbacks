@@ -17,102 +17,124 @@ const CONTENT = 'content';
 // // FOOTER
 const BLURB = 'blurb';
 
-class Activator {
-  static get STATUSES() {
-    return {
-      ACTIVATED: 'ACTIVATED',
-      DEACTIVATED: 'DEACTIVATED',
-    }
-  }
+const Activator = (active = false) => {
+  const statuses = {
+    ACTIVATED: 'ACTIVATED',
+    DEACTIVATED: 'DEACTIVATED',
+  };
 
-  constructor(active = false) {
-    this.active = active;
-    this.activationKey = active
-      ? Activator.STATUSES.ACTIVATED
-      : Activator.STATUSES.DEACTIVATED;
-  }
+  const getStatuses = () => {
+    return statuses;
+  };
+
+  let _active = active;
+  let _activationKey = active
+    ? getStatuses().ACTIVATED
+    : getStatuses().DEACTIVATED;
+
+  const isActive = () => _active;
+  const compareStatus = status => status === _activationKey;
   
-  _toggleActiveStatus = status => () => {
+  const toggleActiveStatus = status => () => {
     switch (status) {
-      case Activator.STATUSES.ACTIVATED: {
-        this.activationKey = status;
-        this.active = true;
+      case getStatuses().ACTIVATED: {
+        _activationKey = status;
+        _active = true;
         break;
       }
-      case Activator.STATUSES.DEACTIVATED: {
-        this.activationKey = status;
-        this.active = false;
+      case getStatuses().DEACTIVATED: {
+        _activationKey = status;
+        _active = false;
         break;
       }
       default: break;
     }
-  }
 
-  compareStatus(status) {
-    return status === this.activationKey;
-  }
+    return this;
+  };
 
-  toggleBasedOnStatus(status) {
-    if (!Object.keys(Activator.STATUSES).includes(status)) {
+  const toggleBasedOnStatus = (status) => {
+    if (!Object.keys(getStatuses()).includes(status)) {
       throw new Error('Activation status unsupported');
     }
 
-    this._toggleActiveStatus(status)();
+    toggleActiveStatus(status)();
+
+    return this;
   }
 
-  activate() {
-    this._toggleActiveStatus(Activator.STATUSES.ACTIVATED);
+  const activate = () => {
+    toggleActiveStatus(getStatuses().ACTIVATED);
+
+    return this;
   }
 
-  deactivate() {
-    this._toggleActiveStatus(Activator.STATUSES.DEACTIVATED);
+  const deactivate = () => {
+    toggleActiveStatus(getStatuses().DEACTIVATED);
+    
+    return this;
   }
+
+  return {
+    getStatuses,
+    isActive,
+
+    compareStatus,
+    toggleBasedOnStatus,
+
+    activate,
+    deactivate,
+
+    _active,
+  };
 }
 
 class Page extends React.Component {
   // Page items
   state = {
     [NAVIGATION]: {
-      [ITEM]: new Activator(),
+      [ITEM]: Activator(),
     },
     [HEADER]: {
-      [LOGO]: new Activator(true),
-      [ACTION]: new Activator(),
+      [LOGO]: Activator(true),
+      [ACTION]: Activator(),
     },
     [MAIN]: {
-      [CONTENT]: new Activator(true),
+      [CONTENT]: Activator(true),
     },
     [FOOTER]: {
-      [BLURB]: new Activator(),
+      [BLURB]: Activator(),
     },
   };
 
   setActivationStatus = status => component => item => () => {
-    if (!Object.keys(Activator.STATUSES).includes(status)) {
+    if (!Object.keys(Activator().getStatuses()).includes(status)) {
       throw new Error('Invalid activation status provided!');
     }
-
+    
     if (!Object.keys(this.state).includes(component)) {
       throw new Error('Invalid page component provided!');
     }
-
+    
     const componentState = this.state[component];
 
     if (!Object.keys(componentState).includes(item)) {
       throw new Error('Invalid component item provided!');
     }
 
-    if (this.state[component][item].compareStatus(status)) return;
+    const itemUnderComponent = this.state[component][item];
+
+    if (itemUnderComponent.compareStatus(status)) return;
  
     this.setState(state => {
-      state[component][item].toggleBasedOnStatus(status);
+      itemUnderComponent.toggleBasedOnStatus(status);
       return state;
     });
   }
 
   // by status
-  setActivatedStatus = this.setActivationStatus(Activator.STATUSES.ACTIVATED);
-  setDeactivatedStatus = this.setActivationStatus(Activator.STATUSES.DEACTIVATED);
+  setActivatedStatus = this.setActivationStatus(Activator().getStatuses().ACTIVATED);
+  setDeactivatedStatus = this.setActivationStatus(Activator().getStatuses().DEACTIVATED);
 
   // by component
   setActivatedStatusForNavigation = this.setActivatedStatus(NAVIGATION);
@@ -149,7 +171,7 @@ class Page extends React.Component {
           <Page.Item
             onActivate={this.setActivatedStatusForNavigationItem}
             onDeactivate={this.setDeactivatedStatusForNavigationItem}
-            active={this.state[NAVIGATION][ITEM].active}
+            active={this.state[NAVIGATION][ITEM].isActive()}
             color="white"
             label={ITEM} />
         </aside>
@@ -158,13 +180,13 @@ class Page extends React.Component {
             <Page.Item
               onActivate={this.setActivatedStatusForHeaderLogo}
               onDeactivate={this.setDeactivatedStatusForHeaderLogo}
-              active={this.state[HEADER][LOGO].active}
+              active={this.state[HEADER][LOGO].isActive()}
               color="blue"
               label={LOGO} />
             <Page.Item
               onActivate={this.setActivatedStatusForHeaderAction}
               onDeactivate={this.setDeactivatedStatusForHeaderAction}
-              active={this.state[HEADER][ACTION].active}
+              active={this.state[HEADER][ACTION].isActive()}
               color="green"
               label={ACTION} />
           </header>
@@ -172,7 +194,7 @@ class Page extends React.Component {
             <Page.Item
               onActivate={this.setActivatedStatusForMainContent}
               onDeactivate={this.setDeactivatedStatusForMainContent}
-              active={this.state[MAIN][CONTENT].active}
+              active={this.state[MAIN][CONTENT].isActive()}
               color="red"
               label={CONTENT} />
           </section>
@@ -180,7 +202,7 @@ class Page extends React.Component {
             <Page.Item
               onActivate={this.setActivatedStatusForFooterBlurb}
               onDeactivate={this.setDeactivatedStatusForFooterBlurb}
-              active={this.state[FOOTER][BLURB].active}
+              active={this.state[FOOTER][BLURB].isActive()}
               color="purple"
               label={BLURB} />
           </footer>
