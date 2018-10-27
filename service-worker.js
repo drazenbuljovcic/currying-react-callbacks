@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.2/workbox-sw.js");
 
 importScripts(
-  "/currying-react-event-callbacks/precache-manifest.2ad02c83acec35a56586768d76ea1991.js"
+  "/currying-react-callbacks/precache-manifest.166300ead2e6c24bc508022c93c01dc2.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/currying-react-event-callbacks/index.html", {
+workbox.routing.registerNavigationRoute("/currying-react-callbacks/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });

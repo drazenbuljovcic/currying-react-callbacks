@@ -1,13 +1,13 @@
 {
-  "main.css": "/currying-react-event-callbacks/static/css/main.4c4f9bc1.chunk.css",
-  "main.js": "/currying-react-event-callbacks/static/js/main.a92e1c91.chunk.js",
-  "main.js.map": "/currying-react-event-callbacks/static/js/main.a92e1c91.chunk.js.map",
-  "static/js/1.79777bf6.chunk.js": "/currying-react-event-callbacks/static/js/1.79777bf6.chunk.js",
-  "static/js/1.79777bf6.chunk.js.map": "/currying-react-event-callbacks/static/js/1.79777bf6.chunk.js.map",
-  "runtime~main.js": "/currying-react-event-callbacks/static/js/runtime~main.393d43d6.js",
-  "runtime~main.js.map": "/currying-react-event-callbacks/static/js/runtime~main.393d43d6.js.map",
-  "static/css/main.4c4f9bc1.chunk.css.map": "/currying-react-event-callbacks/static/css/main.4c4f9bc1.chunk.css.map",
-  "index.html": "/currying-react-event-callbacks/index.html",
-  "precache-manifest.2ad02c83acec35a56586768d76ea1991.js": "/currying-react-event-callbacks/precache-manifest.2ad02c83acec35a56586768d76ea1991.js",
-  "service-worker.js": "/currying-react-event-callbacks/service-worker.js"
+  "main.css": "/currying-react-callbacks/static/css/main.4c4f9bc1.chunk.css",
+  "main.js": "/currying-react-callbacks/static/js/main.a92e1c91.chunk.js",
+  "main.js.map": "/currying-react-callbacks/static/js/main.a92e1c91.chunk.js.map",
+  "static/js/1.79777bf6.chunk.js": "/currying-react-callbacks/static/js/1.79777bf6.chunk.js",
+  "static/js/1.79777bf6.chunk.js.map": "/currying-react-callbacks/static/js/1.79777bf6.chunk.js.map",
+  "runtime~main.js": "/currying-react-callbacks/static/js/runtime~main.d19abdca.js",
+  "runtime~main.js.map": "/currying-react-callbacks/static/js/runtime~main.d19abdca.js.map",
+  "static/css/main.4c4f9bc1.chunk.css.map": "/currying-react-callbacks/static/css/main.4c4f9bc1.chunk.css.map",
+  "index.html": "/currying-react-callbacks/index.html",
+  "precache-manifest.166300ead2e6c24bc508022c93c01dc2.js": "/currying-react-callbacks/precache-manifest.166300ead2e6c24bc508022c93c01dc2.js",
+  "service-worker.js": "/currying-react-callbacks/service-worker.js"
 }
