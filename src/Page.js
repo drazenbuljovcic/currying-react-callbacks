@@ -11,7 +11,7 @@ const FOOTER = 'footer';
 const ITEM = 'item';
 // // HEADER
 const LOGO = 'logo';
-const ACTION_BTN = 'action_btn';
+const ACTION = 'action';
 // // MAIN
 const CONTENT = 'content';
 // // FOOTER
@@ -77,7 +77,7 @@ class Page extends React.Component {
     },
     [HEADER]: {
       [LOGO]: new Activator(true),
-      [ACTION_BTN]: new Activator(),
+      [ACTION]: new Activator(),
     },
     [MAIN]: {
       [CONTENT]: new Activator(true),
@@ -133,8 +133,8 @@ class Page extends React.Component {
   setActivatedStatusForHeaderLogo = this.setActivatedStatusForHeader(LOGO);
   setDeactivatedStatusForHeaderLogo = this.setDeactivatedStatusForHeader(LOGO);
 
-  setActivatedStatusForHeaderAction = this.setActivatedStatusForHeader(ACTION_BTN);
-  setDeactivatedStatusForHeaderAction = this.setDeactivatedStatusForHeader(ACTION_BTN);
+  setActivatedStatusForHeaderAction = this.setActivatedStatusForHeader(ACTION);
+  setDeactivatedStatusForHeaderAction = this.setDeactivatedStatusForHeader(ACTION);
   // Main
   setActivatedStatusForMainContent = this.setActivatedStatusForMain(CONTENT);
   setDeactivatedStatusForMainContent = this.setDeactivatedStatusForMain(CONTENT);
@@ -164,9 +164,9 @@ class Page extends React.Component {
             <Page.Item
               onActivate={this.setActivatedStatusForHeaderAction}
               onDeactivate={this.setDeactivatedStatusForHeaderAction}
-              active={this.state[HEADER][ACTION_BTN].active}
+              active={this.state[HEADER][ACTION].active}
               color="green"
-              label={ACTION_BTN} />
+              label={ACTION} />
           </header>
           <section className="page__section">
             <Page.Item
@@ -182,7 +182,7 @@ class Page extends React.Component {
               onDeactivate={this.setDeactivatedStatusForFooterBlurb}
               active={this.state[FOOTER][BLURB].active}
               color="purple"
-              label={ACTION_BTN} />
+              label={BLURB} />
           </footer>
         </main>
       </div>

@@ -38,8 +38,18 @@ aside.page__navigation {
   padding: 20px;
   
   width: 200px;
-
+  
   background-color: skyblue;
+}
+
+@media screen and (max-width: 728px) {
+  div.page {
+    flex-direction: column;
+  }
+  
+  aside.page__navigation {
+    width: auto;
+  }
 }
 
 main {
