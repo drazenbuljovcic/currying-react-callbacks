@@ -1,3 +1,9 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -6,9 +12,114 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  display: block;
+  height: 100vh;
+  color: white;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+div#root {
+  height: 100%;
+}
+
+div.page {
+  height: 100%;
+  display: flex;
+}
+
+aside.page__navigation {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  
+  width: 200px;
+
+  background-color: skyblue;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+header.page__header {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+
+  background-color: springgreen;
+}
+
+section.page__section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+
+  background: rebeccapurple;
+
+  flex: 1;
+}
+
+footer.page__footer {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+
+  background-color: cadetblue;
+}
+
+.page__item {
+  position: relative;
+
+  padding: 10px;
+  font-size: 2em;
+  line-height: 2em;
+
+  text-transform: uppercase;
+  text-align: center;
+  user-select: none;
+
+  box-shadow: 5px 3px 2px rgb(0, 0, 0, .3);
+}
+
+.page__item__activator,
+.page__item__deactivator {
+  cursor: pointer;
+}
+
+.page__item__status {
+  font-size: .4em;
+  line-height: 1em;
+}
+
+.page__item--white {
+  background: white;
+  color: black;
+}
+
+.page__item--purple {
+  background: rebeccapurple;
+}
+
+.page__item--green {
+  background: seagreen;
+}
+
+.page__item--blue {
+  background: slateblue;
+}
+
+.page__item--red {
+  background: crimson;
+}
+
+.page__item--yellow {
+  background: yellowgreen;
 }
